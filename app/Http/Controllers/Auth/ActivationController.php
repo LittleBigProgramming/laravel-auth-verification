@@ -15,7 +15,7 @@ class ActivationController extends Controller
      */
     public function activate(Request $request)
     {
-        $user = User::where('email', $request->email)->where('activation_token', $request->token)->firstOrFail();
+        $user = User::byActivationColumns($request->email, $request->token)->firstOrFail();
 
         $user->update([
             'is_active' => true,
