@@ -29,7 +29,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function scopeByActivationColumns(Builder $queryBuilder, $email, $token) {
+    public function scopeByActivationColumns(Builder $queryBuilder, $email, $token)
+    {
         return $queryBuilder->where('email', $email)->where('activation_token', $token);
     }
 }
