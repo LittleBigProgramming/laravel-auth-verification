@@ -1,6 +1,6 @@
 
 
-## Laravel Authenication Verification
+## Laravel Authentication Verification
 
 This adds email verification to the authentication workflow. 
 
