@@ -18,4 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/auth/activate', 'Auth\ActivationController@activate')->name('auth.activate');
+Route::get('/auth/activation/resend', 'Auth\ResendActivationEmailController@showResendForm')->name('auth.activation.resend');
+Route::post('/auth/activation/resend', 'Auth\ResendActivationEmailController@resend');
+
 Route::get('/home', 'HomeController@index')->name('home');

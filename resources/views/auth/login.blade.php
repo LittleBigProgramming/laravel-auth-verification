@@ -60,6 +60,10 @@
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {{ __('Forgot Your Password?') }}
                                 </a>
+
+                                <a class="btn btn-link" href="{{ route('auth.activation.resend') }}">
+                                    {{ __('Resend Activation Email') }}
+                                </a>
                             </div>
                         </div>
                     </form>

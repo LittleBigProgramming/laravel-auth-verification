@@ -4,7 +4,6 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -29,8 +28,24 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * @param Builder $queryBuilder
+     * @param $email
+     * @param $token
+     * @return $this
+     */
     public function scopeByActivationColumns(Builder $queryBuilder, $email, $token)
     {
         return $queryBuilder->where('email', $email)->where('activation_token', $token);
+    }
+
+    /**
+     * @param Builder $builder
+     * @param $email
+     * @return $this
+     */
+    public function scopeByEmail(Builder $builder, $email)
+    {
+        return $builder->where('email', $email);
     }
 }
