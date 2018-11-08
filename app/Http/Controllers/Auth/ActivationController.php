@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use http\Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,11 @@ class ActivationController extends Controller
      */
     public function activate(Request $request)
     {
-        $user = User::byActivationColumns($request->email, $request->token)->firstOrFail();
+        try {
+            $user = User::byActivationColumns($request->email, $request->token)->firstOrFail();
+        } catch (Exception $e) {
+            return abort(404);
+        }
 
         $user->update([
             'is_active' => true,

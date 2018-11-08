@@ -36,7 +36,7 @@ class User extends Authenticatable
      */
     public function scopeByActivationColumns(Builder $queryBuilder, $email, $token)
     {
-        return $queryBuilder->where('email', $email)->where('activation_token', $token);
+        return $queryBuilder->where('email', $email)->whereNotNull('activation_token')->where('activation_token', $token);
     }
 
     /**
